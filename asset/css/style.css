@@ -1,0 +1,109 @@
+* {
+    font-family: 'Maven Pro', sans-serif;
+    box-sizing: border-box;
+  }
+  
+  body,html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(45deg, #ffffff 20%, #ffffff);
+    text-align: center;
+    font-family: 'Segoe UI';
+  }
+  p{
+    font-size: 0.85rem;
+    color: #505050;
+  }
+  form {
+    width: 45%;
+    margin-left: 30%;
+    margin-top: 10%;
+   
+  }
+
+  a {
+    color: #5c9f24;
+  }
+  .a{
+    padding-top: 3%;
+    font-size: 0.9rem;
+  }
+  
+  input {
+    width: 100%;
+    background: transparent;
+    border-bottom: solid 1px #5c9f24;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 1rem;
+    padding: 0.5em 0.4em;
+    transition: all 0.4s;
+    color: #080808;
+    margin: 0.7rem 0;
+  }
+  input:focus {
+    background: #8ccc58;
+    transform: scale3d(1.06,1.06,1.06);
+  }
+  
+  button {
+    background: transparent;
+    width: 50%;
+    margin-top: 2rem;
+    font-size: 1rem;
+    border: solid 1px #5c9f24;
+    padding: 1em 0;
+    color: #449104;
+    transition: all 0.6s;
+  }
+  button:hover {
+    color: #ffffff;
+    cursor:pointer;
+    background: #5c9f24;
+  }
+  
+  h1 {
+    color: #84c74d;
+    border-bottom: solid 1px #5c9f24;
+    padding: 0 0 0.8em 0;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 1em;
+  }
+  h2 {
+    color: #84c74d;
+    border-bottom: solid 1px #5c9f24;
+    padding: 0 0 0.8em 0;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 1em;
+  }
+  ::-webkit-file-upload-button {
+    background: #5c9f24;
+    color: white;
+    padding: 0.5em;
+    border: none;
+    border-radius: 5%;
+  }
+  .error{
+    color: rgb(248, 87, 87);
+    font: 0.8em sans-serif;
+    text-align: justify;
+  }
+  
+  
+  
+
+  @media (max-width: 550px) {
+    form {
+    width: 90%;
+    margin-left: 3%;
+    padding-top: 5%;
+  }
+    input {
+      font-size: 1em;
+    }
+  }
