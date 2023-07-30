@@ -53,6 +53,8 @@ if(isset($_POST['submit']))
 		$cpassword=text_input($_POST['cpassword']);
 	 }
 	 $image=$_FILES['image'];
+	 
+	 if(!empty($image)){
 	 if($image['error']==0)
 	 {   
 		 $filename=$image['name'];
@@ -79,7 +81,10 @@ if(isset($_POST['submit']))
 		 }
 	 }else{
 		$imageErr="Invalid Image";
-	 }	
+	 }
+	}else{
+		$imageErr="Please choose your profile picture!";
+	}	
 	 
 	if(empty($nameErr) && empty($passErr)&& empty($cpassErr) && empty($imageErr)){
 		$token=rand(100000,999999);
@@ -92,22 +97,28 @@ if(isset($_POST['submit']))
 
 
 ?>
+<link rel="stylesheet" href="assets/css/log.css">
 <body>
     <form method="post" action="" enctype="multipart/form-data">
 		<h1>Register</h1>
-		<input name="name" placeholder="Username" value="<?php echo $name; ?>" required>
-		<div class="error"><?php echo $nameErr; ?></div>
-		<input name="email" type="email" placeholder="Email" value="<?php echo $email; ?>" required>
-		<div class="error"><?php echo $emailErr; ?></div>
-		<input name="password" type="password" placeholder="Password" value="<?php echo $password; ?>" minlength="8" required>
-		<div class="error"><?php echo $passErr; ?></div>
-		<input name="cpassword" type="password" placeholder="Confirm Password" value="<?php echo $cpassword; ?>" minlength="8" required>
-		<div class="error"><?php echo $cpassErr; ?></div>
-		<input type="file" name="image" value="<?php echo $image; ?>"  required >
+		<div>
+        <div id="img-preview"></div>
+         <input type="file" accept="image/*" id="choose-file" name="image"/>
+         <label for="choose-file">+ Choose Profile Picture</label>
+        </div>
 		<div class="error"><?php echo $imageErr; ?></div>
-		<input type="hidden">
-		<button type="submit" name="submit">Register</button>
-		<p>Already have an account? <a href="signin.php">Sign In</a></p>
+		<input class="input" name="name" placeholder="Username" value="<?php echo $name; ?>" required>
+		<div class="error"><?php echo $nameErr; ?></div>
+		<input class="input" name="email" type="email" placeholder="Email" value="<?php echo $email; ?>" required>
+		<div class="error"><?php echo $emailErr; ?></div>
+		<input class="input" name="password" type="password" placeholder="Password" value="<?php echo $password; ?>" minlength="8" required>
+		<div class="error"><?php echo $passErr; ?></div>
+		<input class="input" name="cpassword" type="password" placeholder="Confirm Password" value="<?php echo $cpassword; ?>" minlength="8" required>
+		<div class="error"><?php echo $cpassErr; ?></div>
+		<button class="submit" type="submit" name="submit">Register</button>
+		<p class='p'>Already have an account? <a class='link' href="signin.php">Sign In</a></p>
 	  </form> 
 </body>
-</html>
+<?php
+include_once __DIR__.'/layouts/footer.php';
+?>

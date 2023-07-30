@@ -1,5 +1,8 @@
 <?php
+session_start();
 include_once __DIR__.'/layouts/header.php';
+include_once __DIR__.'/controller/registerController.php';
+$register_controller=new RegisterController();
 
 // convert illegal input value to ligal value formate
 function text_input($value) {
@@ -8,7 +11,7 @@ function text_input($value) {
 	$value = htmlspecialchars($value);
 	return $value;
   }
-  
+  $email=$_SESSION['email'];
 $password=$cpassword=$passErr=$cpassErr="";
 $uppercasePassword = "/(?=.*?[A-Z])/";
 $lowercasePassword = "/(?=.*?[a-z])/";
@@ -29,17 +32,26 @@ if(isset($_POST['submit'])){
 	 else{
 		$cpassword=text_input($_POST['cpassword']);
 	 }
+	 if(empty($passErr)&& empty($cpassErr)){
+		$status=$register_controller->editPassword($email,$password,$cpassword);
+		if($status){
+			echo "<script>location.href='signin.php'</script>";
+		}
+	 }
 }
 
 ?>
+<link rel="stylesheet" href="assets/css/log.css">
 <body>
-    <form>
+    <form action="" method="post">
 		<h2>Create New Password</h2>
-		<input name="password" type="password" placeholder="Enter your new password" value="<?php echo $password; ?>" minlength="8" required>
+		<input class="input" name="password" type="password" placeholder="Enter your new password" value="<?php echo $password; ?>" minlength="8" required>
 		<div class="error"><?php echo $passErr; ?></div>
-		<input name="cpassword" type="password" placeholder="Enter your new confirm password" value="<?php echo $cpassword; ?>" minlength="8" required>
+		<input class="input" name="cpassword" type="password" placeholder="Enter your new confirm password" value="<?php echo $cpassword; ?>" minlength="8" required>
 		<div class="error"><?php echo $cpassErr; ?></div>
-		<button type="submit">Reset Password</button>
+		<button class='submit' type="submit" name="submit">Reset Password</button>
 	  </form> 
 </body>
-</html>
+<?php
+include_once __DIR__.'/layouts/footer.php';
+?>

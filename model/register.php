@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__.'/../vendor/db/db.php';
+include_once __DIR__ . '/../vendor/database/database.php';
 
 class Register{
     public function createUser($name,$email,$password,$cpassword,$token,$filename){
@@ -46,10 +46,24 @@ class Register{
     return $result;
    }
 
-
-   
-
-    
-   
+   public function updatePassword($email,$password,$cpassword){
+        //1.db connection
+      $con=Database::connect();
+      $con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+      //2. write sql
+      $sql='update users set password=:password,confirm_password=:confirm_password where email=:email';
+      $statement=$con->prepare($sql);   
+      $statement->bindParam(':password',$password);
+      $statement->bindParam(':confirm_password',$cpassword);
+      $statement->bindParam(':email',$email);
+      if($statement->execute())
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+   }  
 }
 ?>

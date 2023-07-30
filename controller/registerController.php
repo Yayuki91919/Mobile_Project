@@ -17,6 +17,10 @@ class RegisterController extends Register{
     public function getUser($email){
         return $this->getUserInfo($email);
     }
+    public function editPassword($email,$password,$cpassword)
+    {
+        return $this->updatePassword($email,$password,$cpassword);
+    }
 
     public function mailRegister($email,$token)
     {
