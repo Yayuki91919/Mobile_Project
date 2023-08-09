@@ -54,19 +54,17 @@ if (isset($_POST['add'])) {
                 data: {
                     bid: brandid
                 },
-                success: function(data) {
-                    $('#models').html(data);
+                success: function(bdata) {
+                    $('#models').html(bdata);
                     // console.log(brandid);
                 }
             });
 
         });
 
-        // $('#summernote').summernote({
-        //     placeholder: 'Your content is here',
-        //     tabsize: 2,
-        //     height: 100
-        // });
+        $('#summernote').summernote({
+            placeholder: 'Your text is here....',
+        });
 
     });
 

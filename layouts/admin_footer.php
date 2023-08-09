@@ -39,7 +39,6 @@
 <script src="../assets/js/myscript.js"></script>
 <script src="../assets/js/my_script.js"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
-
 <!-- End custom js for this page -->
 
 <!-- for summernote -->
@@ -86,9 +85,9 @@
 
         });
 
-        $('#summernote').summernote({
-            placeholder: 'Your text is here....',
-        });
+        // $('#summernote').summernote({
+        //     placeholder: 'Your text is here....',
+        // });
 
 
     });

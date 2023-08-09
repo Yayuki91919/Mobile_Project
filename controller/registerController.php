@@ -6,6 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 include_once __DIR__.'/../vendor/PHPMailer/src/PHPMailer.php';
 include_once __DIR__.'/../vendor/PHPMailer/src/SMTP.php';
 include_once __DIR__.'/../vendor/PHPMailer/src/Exception.php';
+
 include_once __DIR__.'/../model/register.php';
 
 
@@ -32,29 +33,30 @@ class RegisterController extends Register{
 
     public function mailRegister($email,$token)
     {
-    #Server Settings
-    $message=$token;
-    $to=$email;
-     $mailer=new PHPMailer(true);
-    //$mailer->SMTPDebug = SMTP::DEBUG_OFF;
-    $mailer->isSMTP();
-     $mailer->Host='smtp.gmail.com';
-    $mailer->SMTPAuth = true;
-    $mailer->Port = 587;
 
-    $mailer->Username="kyawntharmdy@gmail.com";
-    $mailer->Password="msrthgfgbubghvzz";
+        #Server Settings
+        $message=$token;
+        $to=$email;
+        $mailer=new PHPMailer(true);
+        //$mailer->SMTPDebug = SMTP::DEBUG_OFF;
+        $mailer->isSMTP();
+        $mailer->Host='smtp.gmail.com';
+        $mailer->SMTPAuth = true;
+        $mailer->Port = 587;
 
-    $mailer->setFrom('kyawntharmdy@gmail.com','MMST');
-    $mailer->addAddress($to,'Dear Customer');
+        $mailer->Username="kyawntharmdy@gmail.com";
+        $mailer->Password="msrthgfgbubghvzz";
 
-    $mailer->Subject="Hello! Dear customer!";
-     $mailer->Body="Your code - ".$message;
-    $mailer->AltBody="Plain";
+        $mailer->setFrom('kyawntharmdy@gmail.com','MMST');
+        $mailer->addAddress($to,'Dear Customer');
 
-if( $mailer->send())
- return true;
-}
+        $mailer->Subject="Hello! Dear customer!";
+        $mailer->Body="Your code - ".$message;
+        $mailer->AltBody="Plain";
+
+       if( $mailer->send())
+        return true;
+    }
 
 }
 ?>

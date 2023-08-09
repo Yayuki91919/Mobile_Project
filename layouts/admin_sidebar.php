@@ -19,7 +19,7 @@
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
- <!-- favicon -->
+    <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="../uploads/logo/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../uploads/logo/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../uploads/logo/favicon-16x16.png">
@@ -27,7 +27,6 @@
     <!-- endfavicon -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="../assets/css/style.css">
-
     <!-- End layout styles -->
 </head>
 
@@ -141,8 +140,6 @@
                         <span class="menu-title">Tutorials</span>
                     </a>
                 </li>
-
-
                 <li class="nav-item menu-items">
                     <a class="nav-link" href="app_contact.php">
                         <span class="menu-icon">

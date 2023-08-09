@@ -4,8 +4,11 @@ include_once __DIR__.'/layouts/header.php';
     <div class="container bg-white shadow py-5">
         <div class="card-body row mb-2 main_card">
             <div class="col-lg-5 d-flex flex-column align-items-center p-2">
+
                 <video id="myVideo2" src="assets/videos/The next evolution of Android.mp4" class="shadow rounded-1"
                     width="100%" height="100%" controls></video>
+
+                    
                 <div class="p-1">
                 </div>
             </div>

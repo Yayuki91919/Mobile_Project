@@ -1,4 +1,5 @@
 <?php
+
 include_once __DIR__.'/layouts/header.php';
 include __DIR__.'/controller/registerController.php';
 include __DIR__.'/controller/passresetController.php';

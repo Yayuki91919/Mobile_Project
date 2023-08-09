@@ -3,6 +3,69 @@ include_once __DIR__ . '/layouts/header.php';
 $package_controller=new PackageController();
 $packages=$package_controller->getPackage();
 ?>
+<style>
+    .service {
+        servicepadding: 60px 0;
+    }
+
+    .service .service-list {
+        /* padding: 0; */
+        list-style: none;
+    }
+
+    .service .service-list li {
+        border-bottom: 1px solid gray;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+
+    .service .service-list .question {
+        display: block;
+        position: relative;
+        font-size: 18px;
+        line-height: 15px;
+        opacity: 0.8;
+        padding-left: 25px;
+        cursor: pointer;
+        color: #29a329;
+        transition: 0.3s;
+    }
+
+    .service .service-list i {
+        position: absolute;
+        left: 0;
+        top: -2px;
+    }
+
+    .service .service-list p {
+        margin-bottom: 0;
+        padding: 10px 0 0 25px;
+        color: #2eb82e;
+    }
+
+    .service .service-list .icon-show {
+        display: none;
+    }
+
+    .service .service-list .collapsed {
+        color: black;
+    }
+
+    .service .service-list .collapsed:hover {
+        font-size: 1.2em;
+        color: #000;
+    }
+
+    .service .service-list .collapsed .icon-show {
+        display: inline-block;
+        transition: 0.6s;
+    }
+
+    .service .service-list .collapsed .icon-close {
+        display: none;
+        transition: 0.6s;
+    }
+</style>
 <section class="container-fluid bg-dark g-0 position-relative home_bg">
     <img src="assets/images/mobile_bg_3.jpg" class="img-fluid w-100" style="height: 650px" alt="">
 
@@ -13,8 +76,7 @@ $packages=$package_controller->getPackage();
                     <h1 class="display-4 animate__animated animate__zoomInUp mmst wow" data-wow-delay="0.2s">Myanmar Software Support
                         Team</h1>
                     <p class="fs-5 mb-4 pb-2  animate__animated animate__flipInX wow mmstp" data-wow-delay="1s" style="font-family: 'Zawgyi A Lan 5';">
-                        Welcome From Myanmar Software Support Team Website<br>
-                        Thank for your visit!
+                        Welcome From Myanmar Software Support Team.Thank for your visit!
                     </p>
                 </div>
             </div>
@@ -22,49 +84,91 @@ $packages=$package_controller->getPackage();
     </div>
 </section>
 
-<!-- ======= service Section ======= -->
+<!-- ======= Service Section ======= -->
 <section id="service" class="service">
-    <div class="container bg-white p-5 m-5">
+    <div class="container py-5">
 
-        <div class="section-title animate__rotateInDownLeft wow" data-wow-delay="0.3s">
-            <h2>Service</h2>
-            <p>What we do</p>
+        <div class="section-title">
+            <h2><b>Service</b></h2>
+            <h5>Our Service What We Do?</h5>
         </div>
 
-        <div class="row content" data-aos="fade-up">
-            <div class="col-lg-6 animate__fadeInLeftBig wow" data-wow-delay="0.7">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore
-                    magna aliqua.
-                </p>
-                <ul>
-                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat
-                    </li>
-                    <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit
-                    </li>
-                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg-6 pt-4 pt-lg-0  animate__fadeInRightBig wow" data-wow-delay="0.7">
-                <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                    voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                    sunt in
-                    culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <a href="#" class="btn-learn-more">Learn More</a>
-            </div>
-        </div>
+        <ul class="service-list pt-4">
+
+            <li>
+                <div data-bs-toggle="collapse" class="collapsed question" href="#srvice1">
+                    <span class="head-text">Mi Account Official Lock ျဖည္ျခင္း</span>
+                    <i class="ri-add-line icon-show"></i>
+                    <i class="ri-subtract-line icon-close"></i>
+                </div>
+                <div id="srvice1" class="collapse">
+                    <p>
+                        unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။
+                    </p>
+                </div>
+            </li>
+
+            <li>
+                <div data-bs-toggle="collapse" class="collapsed question" href="#srvice2">
+                    <span class="head-text">Network Lock ျဖည္ျခင္း</span>
+                    <i class="ri-add-line icon-show"></i>
+                    <i class="ri-subtract-line icon-close"></i>
+                </div>
+                <div id="srvice2" class="collapse">
+                    <p>
+                        unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။
+                    </p>
+                </div>
+            </li>
+
+            <li>
+                <div data-bs-toggle="collapse" class="collapsed question" href="#srvice3">
+                    <span class="head-text">Samsung နွင့္ အျခား Phone မ်ား FRP Lock ျဖည္ျခင္း</span>
+                    <i class="ri-add-line icon-show"></i>
+                    <i class="ri-subtract-line icon-close"></i>
+                </div>
+                <div id="srvice3" class="collapse">
+                    <p>
+                        unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။
+                    </p>
+                </div>
+            </li>
+
+            <li>
+                <div data-bs-toggle="collapse" class="collapsed question" href="#srvice4">
+                    <span class="head-text">Unlock Tools မ်ားငွားနိုင္ ?</span>
+                    <i class="ri-add-line icon-show"></i>
+                    <i class="ri-subtract-line icon-close"></i>
+                </div>
+                <div id="srvice4" class="collapse">
+                    <p>
+                        unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။
+                    </p>
+                </div>
+            </li>
+
+            <li>
+                <div data-bs-toggle="collapse" class="collapsed question" href="#srvice5">
+                    <span class="head-text">ICloud Bypass ျပ ုလုပ္ျခင္း</span>
+                    <i class="ri-add-line icon-show"></i>
+                    <i class="ri-subtract-line icon-close"></i>
+                </div>
+                <div id="srvice5" class="collapse">
+                    <p>
+                        unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။ unlock ျပုလုပ္နိင္ရန္အတြက္ unlock လုပ္မည့္ ဖုန္းအမ် ဳိးအစား (model) နွင့္ imei number ေပးပို႔ရန္လုိအပ္သည္။
+                    </p>
+                </div>
+            </li>
+
+        </ul>
 
     </div>
-</section><!-- End service Section -->
+</section>
+<!-- End Service Section -->
 
 <!--package section start-->
 <section class="container-fluid package bg-white g-0">
-    <div class="row g-0 justify-content-around p-3">
+<div class="row g-0 justify-content-around p-3">
         <?php foreach($packages as $package){ ?>
         <div class="card col-md-3 my-3 mx-1 rounded-1 h-100 animate__animated animate__rotateInUpLeft wow " data-wow-delay="0.7s" style="border: 1px solid #60a626;">
             <div class="card-header align-items-center d-flex flex-column justify-content-center" style="background-color: #bbe797;">
@@ -170,7 +274,7 @@ $packages=$package_controller->getPackage();
                     </div>
 
                     <div class="d-flex flex-column text-center team_detail">
-                        <span class="team_name">Myoe Linn OO</span>
+                        <span class="team_name">Tester</span>
                         <span>Web Template Design</span>
                         <span>test@gmail.com</span>
                         <div class="py-3 align-items-center d-flex justify-content-center team_btn">

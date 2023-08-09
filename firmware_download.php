@@ -1,19 +1,41 @@
 <?php
+session_start();
 include_once __DIR__ . '/layouts/header.php';
 include_once __DIR__ . '/controller/firmwaresController.php';
-include_once __DIR__ . '/controller/firmsController.php';
+// include_once __DIR__ . '/controller/firmsController.php';
+include_once __DIR__ . '/controller/modelsController.php';
+include_once __DIR__ . '/controller/brandsController.php';
 
 $id = $_GET['id'];
+
+$brand_id = $_SESSION['brand_id'];
+$model_id = $_SESSION['model_id'];
+$firm_id = $_SESSION['firm_id'] = $id;
+
 
 $firmware_controller = new firmwaresController();
 $fim = $firmware_controller->showFirm($id);
 
 $firm_img = $firmware_controller->imgFirm($id);
 
-$firms_controller = new firmsController();
-$firminfo = $firms_controller->firmsmodel($id);
+// $firms_controller = new firmsController();
+// $firminfo = $firms_controller->firmsmodel($id);
 // echo $firm_img['image'];
 // var_dump($firm_img);
+
+$brands_controller = new brandsController();
+$brands = $brands_controller->getAllBrands();
+
+$models_controller = new modelsController();
+$models = $models_controller->getAllModels();
+
+$firms = $firmware_controller->getAllFirmware();
+
+// $_POST[$brand_id] = $id;
+// if (isset($_POST['brand'])) {
+//   echo '<script>location.href="models.php";</script>';
+// }
+
 ?>
 <!--firmware download-->
 <link rel="stylesheet" href="assets/css/dir.css">
@@ -21,33 +43,61 @@ $firminfo = $firms_controller->firmsmodel($id);
 <section class="bg-white g-0">
   <div class="container">
     <div class="path col-12">
-    <ul>
-            <?php
-            foreach ($firminfo as $item) {
+      <form action="" method="post">
+        <ul>
+          <li>
+            <a><i class="ri-folder-2-line">&nbsp;</i>firmwares</a>
+          </li>
 
-            ?>
-                <li><a href=""><i class="ri-folder-2-line">&nbsp;</i>firmwares</a></li>
+          <li>
+            <a href="models.php?id=<?php echo $brand_id ?>"><i class="ri-folder-2-line">&nbsp;</i>
+              <?php
 
-                <li><a href=""><i class="ri-folder-2-line">&nbsp;</i>
-                        <?php echo $item['brand_name']; ?></a></li>
+              foreach ($brands as $brand) {
+                if ($brand_id == $brand['id']) {
+                  echo $brand['name'];
+                }
+              }
 
-                <li><a href=""><i class="ri-folder-2-line">&nbsp;</i>
-                        <?php echo $item['model_name']; ?></a></li>
+              ?>
+            </a>
+          </li>
+          <li>
+            <a href="firm_list_model.php?id=<?php echo $model_id ?>"><i class="ri-folder-2-line">&nbsp;</i>
 
-                        <li><a href=""><i class="ri-folder-2-line">&nbsp;</i>
-                        <?php echo $item['firmware_name']; ?></a></li>
+              <?php
 
-            <?php
-            }
-            ?>
+              foreach ($models as $model) {
+                if ($model_id == $model['id']) {
+                  echo $model['name'];
+                }
+              }
+
+              ?>
+            </a>
+          </li>
+          <li>
+            <a href="firmware_download.php?id=<?php echo $firm_id ?>"><i class="ri-folder-2-line">&nbsp;</i>
+
+              <?php
+
+              foreach ($firms as $firm) {
+                if ($firm_id == $firm['id']) {
+                  echo $firm['name'];
+                }
+              }
+
+              ?>
+            </a>
+          </li>
         </ul>
+      </form>
     </div>
   </div>
 
   <div class="container-fluid pt-1" style="background-color: whitesmoke;">
- 
-    <div class="card-body">
 
+    <div class="card-body">
       <div class="row align-items-center h-100 fw-information my-4 p-3">
         <div class="col-8 align-item-center mx-auto bg-white p-4">
 
@@ -81,18 +131,19 @@ $firminfo = $firms_controller->firmsmodel($id);
             </tbody>
           </table>
           <div class=" ml-auto mr-auto ms-auto text-center justify-content-around">
-          <div class="pt-3 pb-3">
-            <a href="<?php echo $fim['download_link'] ?>" type="submit" class="btn rounded-1 w-50 border-0 mx-auto" id="down_btn">Download OneDrive&nbsp;<i class="ri-download-2-fill"></i></a>
+            <div class="pt-3 pb-3">
+              <a href="<?php echo $fim['download_link'] ?>" type="submit" class="btn rounded-1 w-50 border-0 mx-auto" id="down_btn" target="_blank">Download OneDrive&nbsp;<i class="ri-download-2-fill"></i></a>
+            </div>
+            <div class="pb-3">
+              <a href="<?php echo $fim['download_link_1'] ?>" type="submit" class="btn rounded-1 w-50 border-0 mx-auto" id="down_btn" target="_blank
+              ">Download MediaFire&nbsp;<i class="ri-download-2-fill"></i></a>
+            </div>
           </div>
-          <div class="pb-3">
-            <a href="<?php echo $fim['download_link_1'] ?>" type="submit" class="btn rounded-1 w-50 border-0 mx-auto" id="down_btn">Download MediaFire&nbsp;<i class="ri-download-2-fill"></i></a>
-          </div>
-        </div>
-        
+
         </div>
 
 
-       
+
 
       </div>
     </div>

@@ -23,29 +23,29 @@ class PassresetController extends Passreset{
     public function mailPassrest($email,$token)
     {
         
-        #Server Settings
-        $message=$token;
-        $to=$email;
-        $mailer=new PHPMailer(true);
-        //$mailer->SMTPDebug = SMTP::DEBUG_OFF;
-        $mailer->isSMTP();
-        $mailer->Host='smtp.gmail.com';
-        $mailer->SMTPAuth = true;
-        $mailer->Port = 587;
+       #Server Settings
+       $message=$token;
+       $to=$email;
+       $mailer=new PHPMailer(true);
+       //$mailer->SMTPDebug = SMTP::DEBUG_OFF;
+       $mailer->isSMTP();
+       $mailer->Host='smtp.gmail.com';
+       $mailer->SMTPAuth = true;
+       $mailer->Port = 587;
 
-        $mailer->Username="kyawntharmdy@gmail.com";
-        $mailer->Password="msrthgfgbubghvzz";
+       $mailer->Username="kyawntharmdy@gmail.com";
+       $mailer->Password="msrthgfgbubghvzz";
 
-        $mailer->setFrom('kyawntharmdy@gmail.com','MMST');
-        $mailer->addAddress($to,'Dear Customer');
+       $mailer->setFrom('kyawntharmdy@gmail.com','MMST');
+       $mailer->addAddress($to,'Dear Customer');
 
-        $mailer->Subject="Hello! Dear customer!";
-        $mailer->Body="Your code - ".$message;
-        $mailer->AltBody="Plain";
+       $mailer->Subject="Hello! Dear customer!";
+       $mailer->Body="Your code - ".$message;
+       $mailer->AltBody="Plain";
 
-       if( $mailer->send())
-        return true;
-    }
+      if( $mailer->send())
+       return true;
+   }
     
 }
 ?>

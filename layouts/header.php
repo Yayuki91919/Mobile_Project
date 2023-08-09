@@ -17,6 +17,8 @@ $brandsController = new brandsController();
 $getAllBrands = $brandsController->getAllBrands();
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +37,8 @@ $getAllBrands = $brandsController->getAllBrands();
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@700&family=Poppins:ital,wght@1,500;1,800&family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@700&family=Tangerine:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/mystyle.css">
-
-    <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="uploads/logo/apple-touch-icon.png">
+     <!-- favicon -->
+     <link rel="apple-touch-icon" sizes="180x180" href="uploads/logo/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="uploads/logo/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="uploads/logo/favicon-16x16.png">
     <link rel="manifest" href="uploads/logo/site.webmanifest">

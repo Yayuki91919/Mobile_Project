@@ -18,6 +18,7 @@ $firmwares = $firmware_controller->getAllFirmware();
                 <table class="table table-dark">
                     <thead>
                         <tr>
+                            <th> </th>
                             <th> No</th>
                             <th> Name</th>
                             <th> Download Link</th>
@@ -27,7 +28,6 @@ $firmwares = $firmware_controller->getAllFirmware();
                             <th> Type</th>
                             <th> Content</th>
                             <th> Model</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +36,16 @@ $firmwares = $firmware_controller->getAllFirmware();
                         foreach ($firmwares as $firmware) {
 
                             echo '<tr>';
+                            echo '<td id='.$firmware['id'].'>
+                                    <a class="btn btn-outline-primary mx-2" href="firmware_edit.php?id='.$firmware['id'].'">
+                                        <i class="ri-pencil-line"></i>
+                                    </a>
+
+                                    <a class="btn btn-outline-danger delete_btn_ajax" href="">
+                                        <i class="ri-delete-bin-2-line"></i>
+                                    </a>
+                                </td>';
+
                             echo '<td>' . $count++ . '</td>';
                             echo '<td>' . $firmware['name'] . '</td>';
                             echo '<td>' . substr($firmware['download_link'],0,40) . '</td>';
@@ -45,20 +55,16 @@ $firmwares = $firmware_controller->getAllFirmware();
                             echo '<td>' . $firmware['type'] . '</td>';
                             echo '<td>' . substr($firmware['details'],0,70) . '&nbsp;more...</td>';
                             echo '<td>' . $firmware['model'] . '</td>';
-                            echo '<td id='.$firmware['id'].'>
-                                    <a class="btn btn-outline-primary mx-3" href="firmware_edit.php?id='.$firmware['id'].'">
-                                        <i class="ri-pencil-line"></i>Edit
-                                    </a>
-
-                                    <a class="btn btn-outline-danger delete_btn_ajax" href="">
-                                        <i class="ri-delete-bin-2-line"></i>Delete
-                                    </a>
-                                </td>';
                             // echo '<td id='.$firmware['id'].'>
-                            //     <a class="btn btn-outline-primary mx-3" href="firmware_edit.php?id='.$firmware['id'].'">
-                            //     <i class="ri-pencil-line"></i>Edit</a>
+                            //         <a class="btn btn-outline-primary mx-3" href="firmware_edit.php?id='.$firmware['id'].'">
+                            //             <i class="ri-pencil-line"></i>Edit
+                            //         </a>
 
-                            //     <a class="btn btn-outline-danger delete_btn_ajax" href="javascript:void(0)"><i class="ri-delete-bin-2-line"></i>Delete</a></td>';
+                            //         <a class="btn btn-outline-danger delete_btn_ajax" href="">
+                            //             <i class="ri-delete-bin-2-line"></i>Delete
+                            //         </a>
+                            //     </td>';
+
 
                             echo '</tr>';
                         }
