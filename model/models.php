@@ -14,7 +14,7 @@ class models{
         return $result;
     }
 
-    public function createNewBrandInfo($name,$image,$brand_id){
+    public function createNewModelInfo($name,$image,$brand_id){
         $con = Database::connect();
         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -42,6 +42,64 @@ class models{
         }
         return $result;
     }
+
+    public function updateModelInfo($id,$name,$image,$brand_id){
+        $con = Database::connect();
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = 'UPDATE models SET name=:name,image=:image,brands_id=:brand_id WHERE id=:id';
+        $statement = $con->prepare($sql);
+        $statement->bindParam(':id', $id);
+        $statement->bindParam(':name', $name);
+        $statement->bindParam(':image', $image);
+        $statement->bindParam(':brand_id', $brand_id);
+        if($statement->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public function deleteModelInfo($id){
+        $con = Database::connect();
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = 'DELETE FROM models WHERE id=:id';
+        $statement = $con->prepare($sql);
+        $statement->bindParam(':id', $id);
+        if($statement->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function showModelInfos($id){
+        $con = Database::connect();
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // $sql = 'SELECT * FROM models WHERE brands_id = :id';
+        $sql = 'SELECT models.* FROM models JOIN firmwares ON models.id = firmwares.models_id JOIN brands ON brands.id = models.brands_id WHERE models.brands_id =:id GROUP BY models.id';
+        $statement = $con->prepare($sql);
+        $statement->bindParam(':id', $id);
+        if($statement->execute()){
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $result;
+    }
+
+    public function dirInfo($id){
+        $con = Database::connect();
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = 'SELECT * FROM brands WHERE id = :id';
+        $statement = $con->prepare($sql);
+        $statement->bindParam(':id', $id);
+        if($statement->execute()){
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+        }
+        return $result;
+    }
+
 }
 
 ?>

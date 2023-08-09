@@ -61,8 +61,8 @@
     font-family: 'El Messiri';
     font-weight: bold;
     /* font-family: 'Tangerine', cursive; */
-    color: #77d02f;
-    text-shadow: 2px 2px 3px #5c9f24;
+    color: #fff;
+    text-shadow: 2px 2px 3px #0c1505;
 }
 .mmstp{
     color: #fff;
@@ -317,3 +317,4 @@ h4 {
     color: #009900;;
 
 }
+

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include_once __DIR__.'/layouts/header.php';
 include_once __DIR__.'/controller/registerController.php';
 include_once __DIR__.'/controller/accountsController.php';
@@ -9,7 +9,7 @@ $account_controller=new AccountsController();
 $email=$password=$emailErr=$passErr="";
 if(isset($_POST['submit'])){
 	$email=$_POST['email'];
-	$_SESSION['email'];
+	$_SESSION['email']=$email;
 	$password=$_POST['password'];
 	$user=$register_controller->getUser($email);
 	if(empty($user)){
@@ -18,10 +18,17 @@ if(isset($_POST['submit'])){
 		$reg_id=$user['id'];
 	$_SESSION['user_id']=$reg_id;
 		$acc_type=2;
-		$status=$account_controller->addAccount($reg_id,$acc_type);
-		if($status){
-		echo "<script>location.href='index.php'</script>";
+		$acc_id=$account_controller->getAccountId($reg_id);
+		if(isset($acc_id)){
+			echo "<script>location.href='index.php'</script>";
+		}else{
+			$status=$account_controller->addAccount($reg_id,$acc_type);
+			if($status){
+				echo "<script>location.href='index.php'</script>";
+				}
 		}
+		
+		
 	}else{
 		$passErr="Incorrect password!";
 	}

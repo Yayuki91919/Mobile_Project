@@ -7,6 +7,7 @@ $getAllBrands = $brandsController->getAllBrands();
 
 ?>
 
+
 <div class="col-12 grid-margin stretch-card">
     <div class="card p-5">
         <div class="card-body">
@@ -35,9 +36,9 @@ $getAllBrands = $brandsController->getAllBrands();
                             </td>';
                             echo '</tr>';
                         }
-                        
+
                         ?>
-                        
+
 
                     </tbody>
                 </table>

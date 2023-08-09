@@ -1,37 +1,38 @@
 <?php
-include_once __DIR__.'/layouts/header.php';
+include_once __DIR__ . '/layouts/header.php';
+$package_controller=new PackageController();
+$packages=$package_controller->getPackage();
 ?>
-    <section class="container-fluid bg-dark g-0 position-relative home_bg">
-        <img src="assets/images/mobile_bg_3.jpg" class="img-fluid w-100" style="height: 650px" alt="">
+<section class="container-fluid bg-dark g-0 position-relative home_bg">
+    <img src="assets/images/mobile_bg_3.jpg" class="img-fluid w-100" style="height: 650px" alt="">
 
-        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
-             style="background: rgba(24, 29, 56, .6);">
-            <div class="container">
-                <div class="row justify-content-start">
-                    <div class="col-lg-10">
-                        <h1 class="display-4 animate__animated animate__zoomInUp mmst wow" data-wow-delay="0.2s">Myanmar Software Support
-                            Team</h1>
-                        <p class="fs-5 mb-4 pb-2  animate__animated animate__flipInX wow mmstp" data-wow-delay="1s"
-                           style="font-family: 'Zawgyi A Lan 5';">
-                            မဂၤလာပါ Myanmar Software Support Team Website မွၾကိ ုဆိုပါသည္
-                        </p>
-                    </div>
+    <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .6);">
+        <div class="container">
+            <div class="row justify-content-start">
+                <div class="col-lg-10">
+                    <h1 class="display-4 animate__animated animate__zoomInUp mmst wow" data-wow-delay="0.2s">Myanmar Software Support
+                        Team</h1>
+                    <p class="fs-5 mb-4 pb-2  animate__animated animate__flipInX wow mmstp" data-wow-delay="1s" style="font-family: 'Zawgyi A Lan 5';">
+                        Welcome From Myanmar Software Support Team Website<br>
+                        Thank for your visit!
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <!-- ======= service Section ======= -->
 <section id="service" class="service">
     <div class="container bg-white p-5 m-5">
 
-        <div class="section-title animate__animated animate__rotateInDownLeft wow" data-wow-delay="0.3s">
+        <div class="section-title animate__rotateInDownLeft wow" data-wow-delay="0.3s">
             <h2>Service</h2>
             <p>What we do</p>
         </div>
 
         <div class="row content" data-aos="fade-up">
-            <div class="col-lg-6 animate__animated animate__fadeInLeftBig wow" data-wow-delay="0.7">
+            <div class="col-lg-6 animate__fadeInLeftBig wow" data-wow-delay="0.7">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
                     et dolore
@@ -46,7 +47,7 @@ include_once __DIR__.'/layouts/header.php';
                     </li>
                 </ul>
             </div>
-            <div class="col-lg-6 pt-4 pt-lg-0 animate__animated animate__fadeInRightBig wow" data-wow-delay="0.7">
+            <div class="col-lg-6 pt-4 pt-lg-0  animate__fadeInRightBig wow" data-wow-delay="0.7">
                 <p>
                     Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
                     voluptate
@@ -64,75 +65,28 @@ include_once __DIR__.'/layouts/header.php';
 <!--package section start-->
 <section class="container-fluid package bg-white g-0">
     <div class="row g-0 justify-content-around p-3">
-        <div class="card col-md-3 my-3 mx-1 rounded-1 h-100 animate__animated animate__rotateInUpLeft wow" data-wow-delay="0.7s" style="border: 3px solid #549121;background-color: #e4f6d5;">
-            <div class="card-header align-items-center d-flex flex-column justify-content-center">
-                <p class="package_title p-2">Basic</p>
+        <?php foreach($packages as $package){ ?>
+        <div class="card col-md-3 my-3 mx-1 rounded-1 h-100 animate__animated animate__rotateInUpLeft wow " data-wow-delay="0.7s" style="border: 1px solid #60a626;">
+            <div class="card-header align-items-center d-flex flex-column justify-content-center" style="background-color: #bbe797;">
+                <p class="package_title p-2r"><?php echo $package['name']; ?></p>
                 <div>
-                    <img src="assets/images/android-6-128.png" class="img-fluid " style="height: 100px; width: 100px">
+                    <img src="uploads/<?php echo $package['image']; ?>" class="img-fluid " style="height: 100px; width: 100px">
                 </div>
             </div>
-            <div class="card-body">
-                <span class="price"><i class="ri-price-tag-3-line">&nbsp;&nbsp;</i>&nbsp;&nbsp;50000ks&nbsp;/&nbsp;month</span>
+            <div class="card-body bg-white">
+                <span class="price"><i class="ri-price-tag-3-line">&nbsp;&nbsp;</i>&nbsp;&nbsp;<?php echo $package['amount']; ?>ks&nbsp;/&nbsp;month</span>
                 <ul class="text-secondary">
-                    <li>Update Firmware</li>
-                    <li>Mi Global Rom Change</li>
-                    <li>Myanmar Font Change</li>
-                    <li>Bootloader Unlock</li>
+                    <?php echo $package['details']; ?>
                     <li>And More tutorials...</li>
                 </ul>
             </div>
-            <div class="card-footer border-0 justify-content-between d-flex pk_btn" style="background-color:#e4f6d5;">
+            <div class="card-footer border-0 justify-content-between d-flex pk_btn  bg-white">
                 <a href="#" class="btn rounded-1"><i class="ri-information-line">&nbsp;</i>Details</a>
-                <a href="#" class="btn rounded-1"><i class="ri-hand-coin-line">&nbsp;</i>Buy</a>
+                <a href="package_buying.php" class="btn rounded-1"><i class="ri-hand-coin-line">&nbsp;</i>Buy</a>
             </div>
         </div>
-        <div class="card col-md-3 my-3 mx-1 rounded-1 animate__animated animate__rotateInUpLeft wow" data-wow-delay="1s" style="border: 3px solid #549121;background-color: #e4f6d5;">
-            <div class="card-header align-items-center d-flex flex-column justify-content-center">
-                <p class="package_title p-2">FRP/Other Unlock</p>
-                <div>
-                    <img src="assets/images/settings-25-256.png" class="img-fluid " style="height: 100px; width: 100px"
-                         alt="">
-                </div>
-            </div>
-            <div class="card-body">
-                <span class="price"><i class="ri-price-tag-3-line">&nbsp;&nbsp;&nbsp;&nbsp;</i>100000ks&nbsp;/&nbsp;month</span>
-                <ul class="text-secondary">
-                    <li>Update Firmware</li>
-                    <li>Mi Global Rom Change</li>
-                    <li>Myanmar Font Change</li>
-                    <li>Bootloader Unlock</li>
-                    <li>And More tutorials...</li>
-                </ul>
-            </div>
-            <div class="card-footer border-0 justify-content-between d-flex pk_btn"  style="background-color: #e4f6d5;">
-                <a href="#" class="btn rounded-1"><i class="ri-information-line">&nbsp;</i>Details</a>
-                <a href="#" class="btn rounded-1"><i class="ri-hand-coin-line">&nbsp;</i>Buy</a>
-            </div>
-        </div>
+       <?php } ?>
         
-        <div class="card col-md-3 my-3 mx-1 rounded-1 h-100 animate__animated animate__rotateInUpLeft wow" data-wow-delay="1.3s" style="border: 3px solid #549121;background-color: #e4f6d5;">
-            <div class="card-header align-items-center d-flex flex-column justify-content-center">
-                <p class="package_title p-2">IOS</p>
-                <div>
-                    <img src="assets/images/apple-256.png" class="img-fluid " style="height: 100px; width: 100px"
-                         alt="">
-                </div>
-            </div>
-            <div class="card-body">
-                <span class="price"><i class="ri-price-tag-3-line">&nbsp;&nbsp;</i>&nbsp;&nbsp;50000ks&nbsp;/&nbsp;month</span>
-                <ul class="text-secondary">
-                    <li>Update Firmware</li>
-                    <li>Mi Global Rom Change</li>
-                    <li>Myanmar Font Change</li>
-                    <li>Bootloader Unlock</li>
-                    <li>And More tutorials...</li>
-                </ul>
-            </div>
-            <div class="card-footer border-0 justify-content-between d-flex pk_btn"style="background-color: #e4f6d5;">
-                <a href="#" class="btn rounded-1"><i class="ri-information-line">&nbsp;</i>Details</a>
-                <a href="#" class="btn rounded-1"><i class="ri-hand-coin-line">&nbsp;</i>Buy</a>
-            </div>
-        </div>
     </div>
 </section>
 <hr>
@@ -151,8 +105,7 @@ include_once __DIR__.'/layouts/header.php';
                 <div class="rounded-1 border border-1 team">
                     <div class="team_img1 bg-white">
                         <div class="p-3 d-flex align-items-center justify-content-around flex-column team_img2">
-                            <img src="assets/images/faces/face2.jpg" alt="" class="img-fluid rounded-circle"
-                                 style="height: 150px; width: 150px">
+                            <img src="assets/images/faces/face2.jpg" alt="" class="img-fluid rounded-circle" style="height: 150px; width: 150px">
                         </div>
                     </div>
 
@@ -168,12 +121,11 @@ include_once __DIR__.'/layouts/header.php';
                 </div>
 
             </div>
-            <div class="card col-md-3 bg-white team_area border-0 wow animate__animated animate__fadeInUp"  data-wow-delay="0.5s">
+            <div class="card col-md-3 bg-white team_area border-0 wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
                 <div class="rounded-1 border border-1 team">
                     <div class="team_img1 bg-white">
                         <div class="p-3 d-flex align-items-center justify-content-around flex-column team_img2">
-                            <img src="assets/images/faces/face1.jpg" alt="" class="img-fluid rounded-circle"
-                                 style="height: 150px; width: 150px">
+                            <img src="assets/images/faces/face1.jpg" alt="" class="img-fluid rounded-circle" style="height: 150px; width: 150px">
                         </div>
                     </div>
 
@@ -189,12 +141,11 @@ include_once __DIR__.'/layouts/header.php';
                 </div>
 
             </div>
-            <div class="card col-md-3 bg-white team_area border-0 wow animate__animated animate__fadeInUp"  data-wow-delay="0.8s">
+            <div class="card col-md-3 bg-white team_area border-0 wow animate__animated animate__fadeInUp" data-wow-delay="0.8s">
                 <div class="rounded-1 border border-1 team">
                     <div class="team_img1 bg-white">
                         <div class="p-3 d-flex align-items-center justify-content-around flex-column team_img2">
-                            <img src="assets/images/faces/face3.jpg" alt="" class="img-fluid rounded-circle"
-                                 style="height: 150px; width: 150px">
+                            <img src="assets/images/faces/face3.jpg" alt="" class="img-fluid rounded-circle" style="height: 150px; width: 150px">
                         </div>
                     </div>
 
@@ -210,12 +161,11 @@ include_once __DIR__.'/layouts/header.php';
                 </div>
 
             </div>
-            <div class="card col-md-3 bg-white team_area border-0 wow animate__animated animate__fadeInUp"  data-wow-delay="1s">
+            <div class="card col-md-3 bg-white team_area border-0 wow animate__animated animate__fadeInUp" data-wow-delay="1s">
                 <div class="rounded-1 border border-1 team">
                     <div class="team_img1 bg-white">
                         <div class="p-3 d-flex align-items-center justify-content-around flex-column team_img2">
-                            <img src="assets/images/faces/face4.jpg" alt="" class="img-fluid rounded-circle"
-                                 style="height: 150px; width: 150px">
+                            <img src="assets/images/faces/face4.jpg" alt="" class="img-fluid rounded-circle" style="height: 150px; width: 150px">
                         </div>
                     </div>
 
@@ -237,5 +187,5 @@ include_once __DIR__.'/layouts/header.php';
     </div>
 </section>
 <?php
-include_once __DIR__.'/layouts/footer.php';
+include_once __DIR__ . '/layouts/footer.php';
 ?>

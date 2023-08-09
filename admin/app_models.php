@@ -4,6 +4,10 @@ include_once __DIR__ . '/../controller/modelsController.php';
 
 $models_controller = new modelsController();
 $get_all_models = $models_controller->getAllModels();
+
+
+
+
 ?>
 
 <div class="col-12 grid-margin stretch-card">
@@ -36,7 +40,7 @@ $get_all_models = $models_controller->getAllModels();
                             echo '<td><img src="../uploads/'     . $get_model['image'] .  '"style="width: 60px;height:80px;"class="rounded-0"></td>';
 
                             echo '<td>' . $get_model['brand'] . '</td>';
-                            echo '<td>
+                            echo '<td id='.$get_model['id'].'>
                                     <a class="btn btn-outline-primary mx-3" href="model_edit.php?id='.$get_model['id'].'">
                                         <i class="ri-pencil-line"></i>Edit
                                     </a>
@@ -46,6 +50,7 @@ $get_all_models = $models_controller->getAllModels();
                                     </a>
                                 </td>';
                             echo '</tr>';
+                            
                         }
 
                         ?>

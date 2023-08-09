@@ -1,11 +1,16 @@
+<?php
+include_once __DIR__ . '/../controller/contactController.php';
 
+$contact_controller = new contactController();
+$data = $contact_controller->getcontact();
+
+?>
 <!--footer section start-->
 <section class="container-fluid bg-dark  g-0 p-0 ">
     <div class="container g-0 ">
         <div class="row py-1">
-                <span class="display-6 justify-content-center d-flex text-white py-5">Address...&nbsp;<img
-                        src="assets/images/logo_white.png" class="mt-2" alt="Bootstrap" style="width: 30px; height: 24px"></span>
-            <div data-wow-delay="0.5s" class="col-md-6 animate__animated wow animate__fadeInLeft">
+            <span class="display-6 justify-content-center d-flex text-white py-5">Address...&nbsp;<img src="assets/images/logo_white.png" class="mt-2" alt="Bootstrap" style="width: 30px; height: 24px"></span>
+            <div class="col-md-6">
                 <div class="row footer p-3 address">
                     <div class="col-md-5 d-flex flex-column">
                         <span><i class="ri-mail-send-line">&nbsp;&nbsp;</i>Mail&nbsp;&nbsp;:</span>
@@ -13,26 +18,29 @@
                         <span><i class="ri-map-pin-2-line">&nbsp;&nbsp;</i>Address&nbsp;&nbsp;:</a></span>
                     </div>
                     <div class="col-md-7 d-flex flex-column">
-                        <a href="#">msst@gmail.com</a>
-                        <a href="#">+959774560061</a>
-                        <a href="#">26corner - 38st x 39st, Chanmyatharsi, Mandalay.</a>
+                        <?php
+                        foreach ($data as $item) {
+                            echo '<a href="#">'.$item['email'].'</a>';
+                            echo '<a href="#">'.$item['phone_number'].'</a>';
+                            echo '<a href="#">'.$item['address'].'</a>';
+
+                        ?>
+
                     </div>
                 </div>
 
             </div>
-            <div data-wow-delay="1s" class="col-md-6 animate__animated wow animate__fadeInRight">
-<!--                <span class="display-6 justify-content-center d-flex text-white"><i class="ri-home-4-line">&nbsp;</i>Address</span>-->
+            <div class="col-md-6">
                 <div class="row footer p-3">
                     <div class="col-md-6 d-flex social_link">
-                        <a href="https://www.facebook.com/msst.org" target="_blank" id="facebook" class="px-3"><i class="ri-facebook-box-line">&nbsp;</i>Facebook</a>
-                        <a href="#" class="px-3" id="youtube"><i class="ri-youtube-line">&nbsp;</i>Youtube</a>
-                        <a href="#" class="px-3" id="twitter"><i class="ri-twitter-line">&nbsp;</i>Twitter</a>
+
+                        <a href="<?php echo $item['facebook'] ?>" target="_blank" id="facebook" class="px-3" target="_blank"><i class="ri-facebook-box-line">&nbsp;</i>Facebook</a>
+
+                        <a href="<?php echo $item['youtube'] ?>" class="px-3" id="youtube" target="_blank"><i class="ri-youtube-line">&nbsp;</i>Youtube</a>
+
+                        <a href="<?php echo $item['twitter'] ?>" class="px-3" id="twitter" target="_blank"><i class="ri-twitter-line">&nbsp;</i>Twitter</a>
                     </div>
-                    <!--                    <div class="col-md-7 d-flex flex-column">-->
-                    <!--                        <a href="https://www.facebook.com/msst.org" class="cursor-grap" target="_blank">msst</a>-->
-                    <!--                        <a href="#">+959774560061</a>-->
-                    <!--                        <a href="#">26corner - 38st x 39st, Chanmyatharsi, Mandalay.</a>-->
-                    <!--                    </div>-->
+                    <?php }?>
                 </div>
 
             </div>
@@ -51,6 +59,8 @@
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="assets/js/myscript.js"></script>
 <script type="text/javascript" src="assets/js/log_myscript.js"></script>
+
+
 </body>
 <script>
     new WOW().init();

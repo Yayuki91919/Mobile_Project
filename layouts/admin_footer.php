@@ -37,7 +37,15 @@
 <!-- Custom js for this page -->
 <script src="../assets/js/dashboard.js"></script>
 <script src="../assets/js/myscript.js"></script>
+<script src="../assets/js/my_script.js"></script>
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+
 <!-- End custom js for this page -->
+
+<!-- for summernote -->
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 <!-- for delete btn with ajax -->
 <script>
@@ -55,25 +63,34 @@
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-// console.log(deleteid)
+                        // console.log(deleteid)
                         $.ajax({
                             type: "post",
-                            url: "brand_delete.php",
-                            data: {id:deleteid},
+                            url: "delete.php",
+                            data: {
+                                id: deleteid
+                            },
                             success: function(response) {
-                                swal("Data Deleted Succefully.!",{
-                                    icon:"success",
-                                }).then((result)=>{
+                                swal("Data Deleted Succefully.!", {
+                                    icon: "success",
+                                }).then((result) => {
                                     location.reload();
                                 });
-                                
+
                             }
                         });
+
                     }
                 });
 
 
         });
+
+        $('#summernote').summernote({
+            placeholder: 'Your text is here....',
+        });
+
+
     });
 </script>
 

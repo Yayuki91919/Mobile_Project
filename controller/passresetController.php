@@ -17,14 +17,15 @@ class PassresetController extends Passreset{
     public function getPassreset($email){
         return $this->getPassresetInfo($email);
     }
-    public function editToken($tok){
-        return $this->updateToken($tok);
+    public function editToken($email,$tok){
+        return $this->updateToken($email,$tok);
     }
     public function mailPassrest($email,$token)
     {
         
         #Server Settings
         $message=$token;
+        $to=$email;
         $mailer=new PHPMailer(true);
         //$mailer->SMTPDebug = SMTP::DEBUG_OFF;
         $mailer->isSMTP();
@@ -32,11 +33,11 @@ class PassresetController extends Passreset{
         $mailer->SMTPAuth = true;
         $mailer->Port = 587;
 
-        $mailer->Username="yay169153@gmail.com";
-        $mailer->Password="xzplmjpnbsfgzoat";
+        $mailer->Username="kyawntharmdy@gmail.com";
+        $mailer->Password="msrthgfgbubghvzz";
 
-        $mailer->setFrom('yay169153@gmail.com','MMST');
-        $mailer->addAddress('sulattwaddy440@gmail.com','Dear Customer');
+        $mailer->setFrom('kyawntharmdy@gmail.com','MMST');
+        $mailer->addAddress($to,'Dear Customer');
 
         $mailer->Subject="Hello! Dear customer!";
         $mailer->Body="Your code - ".$message;

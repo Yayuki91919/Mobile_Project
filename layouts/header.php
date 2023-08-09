@@ -1,12 +1,22 @@
-<?php 
+<?php
+session_start();
 include_once __DIR__ . '/../controller/brandsController.php';
+include_once __DIR__ . '/../controller/accountsController.php';
+include_once __DIR__ . '/../controller/packageController.php';
 
+$acc_controller=new AccountsController();
+if(isset($_SESSION['email'])){
+    $email=$_SESSION['email'];
+}
+if(isset($_SESSION['user_id'])){
+    $user_id=$_SESSION['user_id'];
+    $acc_id=$acc_controller->getAccountId($user_id);
+    $_SESSION['acc_id']=$acc_id;
+}
 $brandsController = new brandsController();
 $getAllBrands = $brandsController->getAllBrands();
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +35,13 @@ $getAllBrands = $brandsController->getAllBrands();
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@700&family=Poppins:ital,wght@1,500;1,800&family=Tajawal:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@700&family=Tangerine:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/mystyle.css">
-    
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="uploads/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="uploads/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="uploads/logo/favicon-16x16.png">
+    <link rel="manifest" href="uploads/logo/site.webmanifest">
+    <!-- endfavicon -->
 </head>
 
 <body class="bg-white container-fluid g-0 overflow-x-hidden">
@@ -33,7 +49,7 @@ $getAllBrands = $brandsController->getAllBrands();
     <section class="container-fluid bg-dark g-0">
         <nav class="container bg-dark navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand text-white me-auto animate__animated animate__bounceInLeft wow" href="index.php">
+                <a class="navbar-brand text-white me-auto" href="index.php">
                     M&nbsp;S&nbsp;S&nbsp;T&nbsp;
                     <img src="assets/images/logo_white.png" alt="Bootstrap" style="width: 30px; height: 24px">
                 </a>
@@ -43,7 +59,7 @@ $getAllBrands = $brandsController->getAllBrands();
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
+                    <ul class="navbar-nav me-auto mb-lg-0 ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="index.php">Home</a>
                         </li>
@@ -53,19 +69,11 @@ $getAllBrands = $brandsController->getAllBrands();
                             </a>
                             <ul class="dropdown-menu  animate__animated animate__flipInY">
 
-                            <?php 
+                            <?php
                             foreach($getAllBrands as $getBrand){
-                                // echo $getBrand['id'];
                                 echo '<li class="animate__animated animate__flipInY wow" data-wow-delay="0.3s"><a class="dropdown-item" href="models.php?id='.$getBrand['id'].'">'.$getBrand['name'].'</a></li>';
                             }
                             ?>
-
-                                <!-- <li class="animate__animated animate__flipInX wow" data-wow-delay="0.1s"><a class="dropdown-item" href="#">Samsung</a></li>
-                                <li class="animate__animated animate__flipInX wow" data-wow-delay="0.3s"><a class="dropdown-item" href="#">oppo</a></li>
-                                <li class="animate__animated animate__flipInX wow" data-wow-delay="0.5s"><a class="dropdown-item" href="#">Honor</a></li>
-                                <li class="animate__animated animate__flipInX wow" data-wow-delay="0.7s"><a class="dropdown-item" href="#">vivo</a></li>
-                                <li class="animate__animated animate__flipInX wow" data-wow-delay="0.9s"><a class="dropdown-item" href="#">Huawei</a></li>
-                                <li class="animate__animated animate__flipInX wow" data-wow-delay="1.1s"><a class="dropdown-item" href="firm_models.php">Xiaomi</a></li> -->
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -81,9 +89,15 @@ $getAllBrands = $brandsController->getAllBrands();
                             <a class="nav-link" href="#">About</a>
                         </li>
                     </ul>
+                    <?php if(isset($acc_id)){?>
+                        <a href=""><span class="me-2 btn-sm animate__animated animate__bounceInRight wow " data-wow-delay="0.2s" type="submit"><?php echo $email;?>
+                    </span></a>
+                        <a href="logout.php"><button class="btn  btn-sm animate__animated animate__bounceInRight wow register_btn" data-wow-delay="0.5s" type="submit">Logout</button></a>
+                    <?php }else{ ?>
                     <a href="register.php"><button class="btn me-2 btn-sm animate__animated animate__bounceInRight wow login_btn" data-wow-delay="0.2s" type="submit">Register
                     </button></a>
                     <a href="signin.php"><button class="btn  btn-sm animate__animated animate__bounceInRight wow register_btn" data-wow-delay="0.5s" type="submit">Login</button></a>
+                     <?php }?>
                 </div>
             </div>
         </nav>

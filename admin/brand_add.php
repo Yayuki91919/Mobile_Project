@@ -8,7 +8,7 @@ if(isset($_POST['add'])){
     $name = $_POST['name'];
     $addNewBrand = $brandsController->addNewBrand($name);
     if($addNewBrand){
-        echo '<script>location.href="brands.php";</script>';
+        echo '<script>location.href="app_brands.php";</script>';
         // echo '<script>location.href = \'brands.php\';</script>';
     }else{
         echo 'You Cant\'t create new brand';
