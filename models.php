@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include_once __DIR__ . '/layouts/header.php';
 include_once __DIR__ . '/controller/modelsController.php';
 include_once __DIR__ . '/controller/brandsController.php';
